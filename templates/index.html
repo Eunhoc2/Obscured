@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Obscured M1</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <form method="POST">
+        <h2>Message:</h2>
+        <textarea name="message">{{ input_text }}</textarea>
+
+        <div style="text-align: center;">
+            <button type="submit" class="btn">Encrypt</button>
+        </div>
+
+        <h2>Output:</h2>
+        <div class="output-box" id="output">{{ output }}</div>
+
+        <div style="text-align: center;">
+            <button type="button" class="btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+        </div>
+
+        <div class="reset-container">
+            <button type="submit" name="reset" value="true" class="btn">Reset Enigma</button>
+            
+            <button type="submit" name="logout_btn" formaction="/logout" class="btn" style="background-color: #ffcccc;">Log Out</button>
+        </div>
+    </form>
+
+    <script>
+        function copyToClipboard() {
+            const text = document.getElementById('output').innerText;
+            if (text) {
+                navigator.clipboard.writeText(text);
+                // alert("Copied!");
+            }
+        }
+    </script>
+</body>
+</html>
